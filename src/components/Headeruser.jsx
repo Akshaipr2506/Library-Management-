@@ -19,7 +19,7 @@ function Headeruser() {
                         <Button variant="secondary">Membership</Button>
                     </div>
                     <div>
-                        <Button variant="primary" className="me-2">Logout</Button>
+                        <Button variant="warning" className="me-2">Logout</Button>
                     </div>
                 </Container>
             </Navbar>
