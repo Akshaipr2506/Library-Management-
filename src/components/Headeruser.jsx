@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Headeruser() {
     const username =localStorage.getItem('username')
@@ -16,8 +17,8 @@ function Headeruser() {
                         <span className="h4 mb-0">Library Management</span>
                     </Navbar.Brand>
                    {!username ? <div>
-                        <Button variant="primary" className="me-2">Login</Button>
-                        <Button variant="secondary">Membership</Button>
+                    <Link to={'/login'}><Button variant="primary" className="me-2">Login</Button></Link>
+                       <Link to={'/logout'}> <Button variant="secondary">Membership</Button></Link>
                     </div>
                     :
                     <div>
