@@ -11,12 +11,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-<<<<<<< HEAD
-        <Route path={'/'} element={<Userhome/>}></Route>
-=======
+
         <Route path={'/'} element={<Userhome/>}/>
 
->>>>>>> naveen
       </Routes>
   );
 }
