@@ -1,18 +1,17 @@
-
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import Userhome from './pages/Userhome'
+// src/App.js
+import React from 'react';
+import {  Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
-  
-
   return (
-    <>
-     <Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path={'/'} element={<Userhome/>}></Route>
-     </Routes>
-    </>
-  )
+      </Routes>
+  );
 }
 
-export default App
+export default App;
