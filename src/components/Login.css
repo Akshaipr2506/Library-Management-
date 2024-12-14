@@ -1,13 +1,13 @@
 
 /* Global styles */
-body {
+.register {
 
     background-image: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg');
-   
+   display: flex;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: fixed;
-   
+   justify-content: center;
     height: 100vh;
   }
   
@@ -140,11 +140,15 @@ body {
 
   /* login */
   
-  body {
+  .login {
     height: 100vh;
-   
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg');
     background-size: cover;
+  background-repeat: no-repeat;
+    width: 100%;
   }
   
   .login-container {
