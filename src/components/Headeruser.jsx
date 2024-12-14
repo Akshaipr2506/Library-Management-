@@ -2,7 +2,6 @@ import React from 'react'
 import { Navbar, Container, Button } from 'react-bootstrap';
 
 function Headeruser() {
-    const username =localStorage.getItem('username')
     return (
         <>
             <Navbar bg="light" expand="lg" className="shadow-sm mb-5">
@@ -15,14 +14,13 @@ function Headeruser() {
                         />
                         <span className="h4 mb-0">Library Management</span>
                     </Navbar.Brand>
-                   {!username ? <div>
+                    <div>
                         <Button variant="primary" className="me-2">Login</Button>
                         <Button variant="secondary">Membership</Button>
                     </div>
-                    :
                     <div>
                         <Button variant="warning" className="me-2">Logout</Button>
-                    </div>}
+                    </div>
                 </Container>
             </Navbar>
         </>
