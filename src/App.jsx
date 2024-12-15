@@ -16,8 +16,6 @@ function App() {
         <Route path={'/'} element={<Userhome/>}/>
         <Route path={'/adminPage'} element={<AdminPage/>}/>
 
-        
-
       </Routes>
   );
 }

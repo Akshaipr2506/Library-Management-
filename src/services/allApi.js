@@ -1,5 +1,20 @@
-// import axios from 'axios';
+import { serverurl } from './serverurl';
+import { commonApi } from './commonApi';
 
+
+
+
+export const addBookApi=async(reqBody)=>{
+    return await commonApi("POST",`${serverurl}/books`,reqBody)
+ }
+
+ export const getBookDetailsApi=async()=>{
+    return await commonApi("GET",`${serverurl}/books`,"")
+ }
+
+ export const deleteBookApi=async(id)=>{
+    return await commonApi("DELETE",`${serverurl}/books/${id}`,{})
+ }
 // const API_URL = 'http://localhost:4000/users';
 
 // // Function to check if a user exists and match credentials
