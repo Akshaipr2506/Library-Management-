@@ -6,6 +6,7 @@ import Userhome from './pages/Userhome'
 
 import Register from './components/Register';
 import AdminPage from './pages/AdminPage';
+import MemberDetails from './pages/MemberDetails';
 
 function App() {
   return (
@@ -13,8 +14,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path={'/'} element={<Userhome/>}/>
-        <Route path={'/adminPage'} element={<AdminPage/>}/>
+        <Route path='/' element={<Userhome/>}/>
+        <Route path='/adminPage' element={<AdminPage/>}/>
+        <Route path="/memberdetails" element={<MemberDetails />} />
+
 
       </Routes>
   );
