@@ -15,23 +15,22 @@ import { getBookDetailsApi } from "../services/allApi";
 
 function AdminPage() {
   const[getBookDetails,setGetBookDetails]=useState([])
-  const[getBookDetailsStatus,setGetBookDetailsStatus]=useState("")
   const[bookDeleteStatus,setBookDeleteStatus]=useState("")
+  const[addBookStatus,setAddBookStatus]=useState("")
 
   const bookDetailsApi=async()=>{
     const result=await getBookDetailsApi()
         // console.log(result);
         setGetBookDetails(result.data)   
-        if(result.status>=200 && result.status<300){
-          setGetBookDetailsStatus(result)
-        }
+      
        
   }
   console.log(getBookDetails);
   
-  useEffect(()=>{
-    bookDetailsApi()
-  },[getBookDetailsStatus,bookDeleteStatus])
+  useEffect(() => {
+    bookDetailsApi();
+  }, [bookDeleteStatus,addBookStatus]); 
+  
 
   
   return (
@@ -67,7 +66,7 @@ function AdminPage() {
 <div className="container mt-5">
         <div className="row">
             <div className="col-md-5"></div>
-            <div className="col-md-2"><AddBook/></div>
+            <div className="col-md-2"><AddBook setAddBookStatus={setAddBookStatus}/></div>
             <div className="col-md-5"></div>
           
         </div>

@@ -4,8 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { addBookApi } from '../services/allApi';
 
-
-function AddBook() {
+function AddBook({setAddBookStatus}) {
 
     const [bookDetails,setBookDetails]=useState({
         title:"",
@@ -22,10 +21,19 @@ function AddBook() {
         if(!title || !author || !imgurl){
             alert("Please fill the form completely")
         }
+        
         else{
             const result=await addBookApi(bookDetails)
             console.log(result);
-            handleClose()
+            if(result.status>=200 && result.status<300){
+              setAddBookStatus(result)
+               handleClose()
+            }
+            else{
+              alert("something went wrong")
+              handleCancel()
+             }
+            
             
         }
     }
