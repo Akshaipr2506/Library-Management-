@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { deleteBookApi } from '../services/allApi';
 
 
+
 function BookCard({book,setBookDeleteStatus}) {
 
 
@@ -13,7 +14,9 @@ function BookCard({book,setBookDeleteStatus}) {
       const result=await deleteBookApi(id)
       if(result.status>=200 && result.status<300){
         setBookDeleteStatus(result)
+        alert("Book Deleted Successfully")
       }
+
   }
 
   return (
@@ -27,8 +30,7 @@ function BookCard({book,setBookDeleteStatus}) {
         </Card.Text>
         <Button onClick={()=>{handleDelete(book?.id)}} variant="danger">Delete</Button>
       </Card.Body>
-    </Card>
-    
+    </Card>    
    </>
   )
 }
