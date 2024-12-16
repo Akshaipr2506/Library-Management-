@@ -14,7 +14,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-     //confirm password
+    //confirm password
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -33,15 +33,15 @@ const Register = () => {
         console.log(response);
 
         return;
-        
+
       }
 
-  
+
       // Register new user
       const newUser = { username, password, role };
 
       await axios.post('http://localhost:4000/users', newUser);
-      
+
       // Redirect to login page after successful registration
       navigate('/login');
     } catch (err) {
@@ -88,22 +88,22 @@ const Register = () => {
               placeholder="Confirm your password"
             />
           </div>
-          <div className="form-group">
-        <label htmlFor="role">Role</label>
-        <select
-          id="role"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-        >
-          <option  value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
+          {/* <div className="form-group">
+            <label htmlFor="role">Role</label>
+            <select
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div> */}
 
           <button type="submit" className="submit-btn">Register</button>
         </form>
         <p className="login-redirect">
-          Already have an account? <Link to={'/login'} style={{textDecoration:'none',color:'#FFD700', fontWeight:'bold'}}>Login</Link>
+          Already have an account? <Link to={'/login'} style={{ textDecoration: 'none', color: '#FFD700', fontWeight: 'bold' }}>Login</Link>
         </p>
       </div>
     </div>

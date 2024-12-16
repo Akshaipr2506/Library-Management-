@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navbar, Container, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function Headeruser() {
     const username =localStorage.getItem('username')
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('username');
+      navigate('/'); // Redirect to home page
+    };
+    
+    
+
     return (
         <>
             <Navbar bg="light" expand="lg" className="shadow-sm mb-5">
@@ -22,7 +34,7 @@ function Headeruser() {
                     </div>
                     :
                     <div>
-                        <Button variant="warning" className="me-2">Logout</Button>
+                        <Button onClick={handleLogout} variant="warning" className="me-2">Logout</Button>
                     </div>}
                 </Container>
             </Navbar>

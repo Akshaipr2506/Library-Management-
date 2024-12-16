@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -8,12 +8,14 @@ function Borrowform() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-        const username=localStorage.getItem('username')
+        
     const handleShow = () =>{
+        const username=localStorage.getItem('username')
         if(!username){
             setShow(true)
         }
     }
+   
 
     
     return (

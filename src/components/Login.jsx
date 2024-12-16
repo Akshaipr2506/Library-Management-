@@ -31,9 +31,9 @@ const Login = () => {
 
         // Redirect based on role
         if (user.role === 'admin') {
-          navigate('/admin-home');
+          navigate('/adminPage');
         } else {
-          navigate('/home');
+          navigate('/');
         }
       }
     } catch (err) {
@@ -41,8 +41,20 @@ const Login = () => {
     }
   };
 
+  const handleLogout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem('user'); // Remove entire user object
+    localStorage.removeItem('username'); // Remove username if separately stored
+
+    // Redirect to the home page
+    const navigate = useNavigate();
+    navigate('/');
+  };
+  
+
+
   return (
-   <div className="login-container">
+    <div className="login-container">
       <div className="login-form">
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
@@ -71,7 +83,7 @@ const Login = () => {
           <button type="submit">Login</button>
         </form>
         <p className="register-redirect">
-          Don't have an account? <Link to={'/register'} style={{textDecoration:'none',color:'#FFD700', fontWeight:'bold'}}>Register</Link>
+          Don't have an account? <Link to={'/register'} style={{ textDecoration: 'none', color: '#FFD700', fontWeight: 'bold' }}>Register</Link>
         </p>
       </div>
     </div>
