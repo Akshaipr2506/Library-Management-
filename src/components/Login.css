@@ -1,6 +1,6 @@
 
 /* Global styles */
-body {
+/* body {
 
     background-image: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg');
    
@@ -9,14 +9,14 @@ body {
     background-position: fixed;
    
     height: 100vh;
-  }
+  } */
   
   .register-container {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width:30rem;
+    height: 100vh;
   }
   
   .register-box {
@@ -140,19 +140,19 @@ body {
 
   /* login */
   
-  body {
+  /* body {
     height: 100vh;
-   
     background-image: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg');
     background-size: cover;
-  }
+  } */
   
   .login-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width:30rem;
+    height: 100vh;
+    /* width:30rem; */
 
   }
   
@@ -252,3 +252,24 @@ body {
     }
   }
   
+
+  .bg-image {
+    background-image: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg');
+    background-size: cover;       /* Ensures the image covers the container */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    min-height: 500px;            /* Set minimum height */
+    border-radius: 8px;           /* Optional: rounded corners */
+  }
+
+
+/* userhome */
+.userhome-page {
+  background-image: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg'); /* Replace with your image URL */
+  background-size: cover;        /* Ensures image covers the entire page */
+  background-position: center;   /* Centers the image */
+  background-repeat: no-repeat;  /* Prevents image repetition */
+  min-height: 100vh;             /* Full height of the viewport */
+  display: flex;
+  flex-direction: column;
+}

@@ -57,6 +57,8 @@ function MemberDetails() {
               <tr>
                 <th>Member ID</th>
                 <th>Member Name</th>
+                <th>Email Id</th>
+                <th>Phone Number </th>
                 <th>Books Borrowed</th>
                 <th>Borrow Date</th>
                 <th>Return Date</th>
@@ -67,6 +69,8 @@ function MemberDetails() {
                 <tr key={member.id}> 
                   <td>{member.id}</td> 
                   <td>{member.username}</td> 
+                  <td>{member.email}</td> 
+                  <td>{member.phone}</td> 
                   <td>No Books Borrowed</td> 
                   <td>1/1/24</td> 
                   <td>1/1/24</td> 

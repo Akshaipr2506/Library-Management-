@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import AddBook from "../components/AddBook";
 import { getBookDetailsApi } from "../services/allApi";
+import { Link } from "react-router-dom";
 
 
 function AdminPage() {
@@ -40,7 +41,7 @@ function AdminPage() {
         <Navbar className="bg-transparent justify-content-between py-4 px-4 ">
           <Form inline>
             <InputGroup>
-              <Button className="btn btn-warning p-2"><FontAwesomeIcon icon={faHouse} /> Back Home</Button>
+              <Link to={'/'}><Button className="btn btn-warning p-2"><FontAwesomeIcon icon={faHouse} /> Back Home</Button></Link>
             </InputGroup>
           </Form>
 
@@ -52,7 +53,7 @@ function AdminPage() {
 
               </Col>
               <Col xs="auto">
-                <Button className="btn btn-danger p-2">Log Out <FontAwesomeIcon icon={faPowerOff} /></Button>
+                <Link to={'/memberdetails'}><Button className="btn btn-danger p-2">Member details</Button></Link>
               </Col>
             </Row>
           </Form>

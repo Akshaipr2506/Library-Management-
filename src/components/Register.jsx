@@ -6,6 +6,8 @@ import './Login.css'
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('user'); // Default role
   const [error, setError] = useState('');
@@ -38,7 +40,7 @@ const Register = () => {
 
 
       // Register new user
-      const newUser = { username, password, role };
+      const newUser = { username, password, role,email,phone};
 
       await axios.post('http://localhost:4000/users', newUser);
 
@@ -50,7 +52,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
+    <div className="register-container bg-image">
       <div className="register-box">
         <h2>Membership Form</h2>
         {error && <p className="error">{error}</p>}
@@ -64,6 +66,28 @@ const Register = () => {
               onChange={(e) => setUsername(e.target.value)}
               required
               placeholder="Enter your username"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              placeholder="Enter your phone number"
             />
           </div>
           <div className="form-group">
@@ -88,6 +112,7 @@ const Register = () => {
               placeholder="Confirm your password"
             />
           </div>
+
           {/* <div className="form-group">
             <label htmlFor="role">Role</label>
             <select

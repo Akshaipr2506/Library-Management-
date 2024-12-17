@@ -21,7 +21,7 @@ function BookCard({book,setBookDeleteStatus}) {
 
   return (
    <>
-      <Card key={book?.id}  style={{ width: '90%'}}>
+      <Card className='p-3' key={book?.id}  style={{ width: '90%'}}>
       <Card.Img variant="top"  src={book?.imgurl} height='300px'/>
       <Card.Body>
         <Card.Title className='text-center'>{book?.title}</Card.Title>

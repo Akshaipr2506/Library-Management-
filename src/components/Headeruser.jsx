@@ -28,9 +28,9 @@ function Headeruser() {
                         />
                         <span className="h4 mb-0">Library Management</span>
                     </Navbar.Brand>
-                   {!username ? <div>
-                    <Link to={'/login'}><Button variant="primary" className="me-2">Login</Button></Link>
-                       <Link to={'/logout'}> <Button variant="secondary">Membership</Button></Link>
+                   {!username ? <div className='d-flex justify-content-center align-items-center'>
+                    <Link to={'/login'}><Button variant="primary" className="me-3">Login</Button></Link>
+                       <Link to={'/register'}> <Button variant="secondary" className='ms-3'>Membership</Button></Link>
                     </div>
                     :
                     <div>
