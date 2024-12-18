@@ -2,22 +2,34 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+// Helper function to format date to dd/mm/yyyy
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, '0'); // Add leading zero if day < 10
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero if month < 10
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 function MemberDetails() {
   const [members, setMembers] = useState([]);
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/Users'); 
+      const response = await axios.get('http://localhost:4000/Users');
       console.log('Fetched Members:', response.data);
-      setMembers(response.data); 
+      setMembers(response.data);
     } catch (error) {
       console.error('Error fetching members:', error);
     }
   };
 
   useEffect(() => {
-    fetchMembers(); 
+    fetchMembers();
   }, []);
+
+  // Filter out the admin users
+  const filteredMembers = members.filter(member => member.role !== 'admin');
 
   return (
     <>
@@ -51,29 +63,48 @@ function MemberDetails() {
       <div className="container mt-2">
         <h2 className="mb-4 text-center">Member Details</h2>
 
-        {members.length > 0 ? (
+        {filteredMembers.length > 0 ? (
           <table className="table table-hover table-bordered">
             <thead className="table-primary">
               <tr>
                 <th>Member ID</th>
                 <th>Member Name</th>
-                <th>Email Id</th>
-                <th>Phone Number </th>
+                <th>Email ID</th>
+                <th>Phone Number</th>
                 <th>Books Borrowed</th>
-                <th>Borrow Date</th>
-                <th>Return Date</th>
               </tr>
             </thead>
             <tbody>
-              {members.map((member) => (
-                <tr key={member.id}> 
-                  <td>{member.id}</td> 
-                  <td>{member.username}</td> 
-                  <td>{member.email}</td> 
-                  <td>{member.phone}</td> 
-                  <td>No Books Borrowed</td> 
-                  <td>1/1/24</td> 
-                  <td>1/1/24</td> 
+              {filteredMembers.map((member) => (
+                <tr key={member.id}>
+                  <td>{member.id}</td>
+                  <td>{member.username}</td>
+                  <td>{member.email || 'N/A'}</td>
+                  <td>{member.phone || 'N/A'}</td>
+                  <td>
+                    {member.borrowedBooks && member.borrowedBooks.length > 0 ? (
+                      <table className="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Borrow Date</th>
+                            <th>Return Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {member.borrowedBooks.map((book, index) => (
+                            <tr key={index}>
+                              <td>{book.title}</td>
+                              <td>{formatDate(book.borrowedDate)}</td> {/* Format Borrow Date */}
+                              <td>{formatDate(book.returnDate)}</td> {/* Format Return Date */}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <span>No Books Borrowed</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

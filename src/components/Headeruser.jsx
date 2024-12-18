@@ -11,6 +11,7 @@ function Headeruser() {
     const handleLogout = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('username');
+      localStorage.removeItem('userId');
       navigate('/'); // Redirect to home page
     };
     

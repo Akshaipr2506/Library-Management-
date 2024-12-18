@@ -27,6 +27,7 @@ const Login = () => {
 
         // Store only the username in localStorage
         localStorage.setItem('username', user.username);
+        localStorage.setItem('userId',user.id);
 
 
         // Redirect based on role
@@ -45,7 +46,8 @@ const Login = () => {
     // Clear user data from localStorage
     localStorage.removeItem('user'); // Remove entire user object
     localStorage.removeItem('username'); // Remove username if separately stored
-
+    localStorage.removeItem('userId');
+    
     // Redirect to the home page
     const navigate = useNavigate();
     navigate('/');
