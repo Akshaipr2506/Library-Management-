@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Headeruser from '../components/Headeruser';
-import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import { Button, Card, Container, Row, Col,Modal } from 'react-bootstrap';
 import Borrowform from '../components/Borrowform';
 import { getBookDetailsApi, getUserDetailsApi, updateUserBorrowedBooksApi } from '../services/allApi';
+import Footer from '../components/Footer';
 
 function Userhome() {
     const [bookDetails, setBookDetails] = useState([]);
-    
-    
+    const [showModal, setShowModal] = useState(false);
+    const [selectedBook, setSelectedBook] = useState(null);
+
+
     useEffect(() => {
         fetchBooks();
     }, []);
@@ -56,7 +59,7 @@ function Userhome() {
             const response = await updateUserBorrowedBooksApi(userId, updatedUserData);
 
             if (response.status === 200) {
-                alert(`Book "${selectedBook.title}" borrowed successfully!`);
+                alert(`Book "${selectedBook.title}" borrowed successfully! Please meet your Librarian`);
             } else {
                 alert("Failed to borrow the book. Please try again.");
             }
@@ -64,6 +67,15 @@ function Userhome() {
             console.error("Error borrowing the book:", error);
             alert("An error occurred. Please try again.");
         }
+    };
+    const handleViewMore = (book) => {
+        setSelectedBook(book);
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSelectedBook(null);
     };
 
     return (
@@ -78,7 +90,7 @@ function Userhome() {
                                     className="mt-3 "
                                     src={book.imgurl || "https://via.placeholder.com/150"}
                                     alt={book.title || "Book Image"}
-                                    style={{ height: "250px", objectFit: "contain",width:"100%" }}
+                                    style={{ height: "250px", objectFit: "contain", width: "100%" }}
                                 />
                                 <Card.Body>
                                     <Card.Title className='text-center'>{book.title || "Untitled Book"}</Card.Title>
@@ -86,7 +98,7 @@ function Userhome() {
                                         <p className='text-center'>{book.author || "Unknown Author"}</p>
                                     </Card.Text>
                                     <div className="d-flex justify-content-between">
-                                        <Button className='me-3' variant="info">View More</Button>
+                                        <Button className='me-3' variant="info" onClick={() => handleViewMore(book)}>View More</Button>
                                         <Borrowform book={book} onConfirmBorrow={handleConfirmBorrow} />
                                     </div>
                                 </Card.Body>
@@ -95,6 +107,36 @@ function Userhome() {
                     ))}
                 </Row>
             </Container>
+            <Footer />
+
+            {/* Modal for View More */}
+            {selectedBook && (
+                <Modal show={showModal} onHide={handleCloseModal} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{selectedBook.title}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="text-center">
+                            <img
+                                src={selectedBook.imgurl || "https://via.placeholder.com/150"}
+                                alt={selectedBook.title}
+                                style={{
+                                    maxHeight: "300px",
+                                    objectFit: "contain",
+                                    width: "100%",
+                                    marginBottom: "20px",
+                                }}
+                            />
+                        </div>
+                        <p><strong>Author:</strong> {selectedBook.author || "Unknown"}</p>
+                        <p><strong>Description:</strong>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos nulla quo, quasi sint eaque hic magni nobis ratione atque ex? Doloremque consequatur sunt dolores exercitationem perferendis repellat repellendus totam explicabo?</p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseModal}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>)}
         </div>
     );
 }

@@ -23,11 +23,11 @@ function Headeruser() {
                 <Container className="d-flex justify-content-between align-items-center">
                     <Navbar.Brand href="#home" className="d-flex align-items-center">
                         <img
-                            src="https://thumbs.dreamstime.com/b/clean-vector-logo-library-white-background-perfect-representing-knowledge-learning-minimalistic-design-format-339580971.jpg" 
+                            src="https://static.vecteezy.com/system/resources/thumbnails/018/250/052/small_2x/library-education-3d-icon-png.png" 
                             alt="Library Logo"
-                            style={{ height: '50px', marginRight: '10px' }}
+                            style={{ height: '60px', marginRight: '15px' }}
                         />
-                        <span className="h1 mb-0">Library</span>
+                        <span className="h1 mb-0">E-Library</span>
                     </Navbar.Brand>
                    {!username ? <div className='d-flex justify-content-center align-items-center'>
                     <Link to={'/login'}><Button variant="primary" className="me-3">Login</Button></Link>
