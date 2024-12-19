@@ -6,7 +6,8 @@ import { getBookDetailsApi, getUserDetailsApi, updateUserBorrowedBooksApi } from
 
 function Userhome() {
     const [bookDetails, setBookDetails] = useState([]);
-
+    
+    
     useEffect(() => {
         fetchBooks();
     }, []);
@@ -74,15 +75,15 @@ function Userhome() {
                         <Col md={3} key={index} className="mb-4">
                             <Card className="shadow-sm h-100 p-3">
                                 <Card.Img
-                                    className="mt-3"
+                                    className="mt-3 "
                                     src={book.imgurl || "https://via.placeholder.com/150"}
                                     alt={book.title || "Book Image"}
-                                    style={{ height: "250px", objectFit: "cover" }}
+                                    style={{ height: "250px", objectFit: "contain",width:"100%" }}
                                 />
                                 <Card.Body>
-                                    <Card.Title>{book.title || "Untitled Book"}</Card.Title>
+                                    <Card.Title className='text-center'>{book.title || "Untitled Book"}</Card.Title>
                                     <Card.Text>
-                                        <p>{book.author || "Unknown Author"}</p>
+                                        <p className='text-center'>{book.author || "Unknown Author"}</p>
                                     </Card.Text>
                                     <div className="d-flex justify-content-between">
                                         <Button className='me-3' variant="info">View More</Button>

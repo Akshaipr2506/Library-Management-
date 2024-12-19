@@ -23,3 +23,8 @@ export const addBookApi=async(reqBody)=>{
  export const updateUserBorrowedBooksApi = async (userId, updatedUserData) => {
    return await commonApi("PUT", `${serverurl}/Users/${userId}`, updatedUserData);
 }
+// Update a specific book by ID
+export const editBookApi = async (id, updatedBookData) => {
+   return await commonApi("PUT", `${serverurl}/books/${id}`, updatedBookData);
+ };
+ 

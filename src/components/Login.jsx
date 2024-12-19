@@ -20,6 +20,7 @@ const Login = () => {
 
       if (response.data.length === 0) {
         setError('Invalid username or password');
+        alert('Invalid username or password. Please try again.');
       } else {
         const user = response.data[0];
         localStorage.setItem('user', JSON.stringify(user)); // Store user data
@@ -43,9 +44,9 @@ const Login = () => {
   };
 
   const handleLogout = () => {
-    // Clear user data from localStorage
-    localStorage.removeItem('user'); // Remove entire user object
-    localStorage.removeItem('username'); // Remove username if separately stored
+    
+    localStorage.removeItem('user'); 
+    localStorage.removeItem('username'); 
     localStorage.removeItem('userId');
     
     // Redirect to the home page

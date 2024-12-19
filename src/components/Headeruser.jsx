@@ -27,7 +27,7 @@ function Headeruser() {
                             alt="Library Logo"
                             style={{ height: '50px', marginRight: '10px' }}
                         />
-                        <span className="h4 mb-0">Library Management</span>
+                        <span className="h1 mb-0">Library</span>
                     </Navbar.Brand>
                    {!username ? <div className='d-flex justify-content-center align-items-center'>
                     <Link to={'/login'}><Button variant="primary" className="me-3">Login</Button></Link>

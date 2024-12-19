@@ -39,13 +39,13 @@ function MemberDetails() {
             <div className="input-group">
               <Link to={'/AdminPage'}>
                 <button className="btn btn-warning p-2" type="button">
-                  <i className="fas fa-house"></i> Back Home
+                  <i className="fas fa-house"></i> Admin Home
                 </button>
               </Link>
             </div>
           </form>
 
-          <form className="d-flex">
+          {/* <form className="d-flex">
             <div className="row">
               <div className="col-auto"></div>
               <div className="col-auto">
@@ -56,7 +56,7 @@ function MemberDetails() {
                 </Link>
               </div>
             </div>
-          </form>
+          </form> */}
         </div>
       </nav>
 
